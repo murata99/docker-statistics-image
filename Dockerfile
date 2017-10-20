@@ -3,8 +3,7 @@ FROM buildpack-deps:xenial
 RUN apt-get update && apt-get install -y \
   curl \
   supervisor \
-  apt-transport-https \
-  libnlopt-dev
+  apt-transport-https
 
 # install julia
 RUN apt-get update && apt-get install -y \
@@ -22,7 +21,8 @@ RUN apt-get update && apt-get install -y \
 # install R
 RUN apt-get update && apt install -y \
   r-base=3.2.* \
-  libcurl4-openssl-dev
+  libcurl4-openssl-dev \
+  libnlopt-dev
 
 COPY . /docker-statistics-image
 
