@@ -23,3 +23,11 @@ RUN apt-get update && apt install -y \
   r-base=3.2.* \
   libcurl4-openssl-dev
 
+COPY . /docker-statistics-image
+
+# install julia packages
+RUN cd /docker-statistics-image && julia install_packages.jl
+
+# install R packages
+RUN cd /docker-statistics-image && Rscript install_packages.R
+
