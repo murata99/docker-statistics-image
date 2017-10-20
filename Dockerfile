@@ -3,7 +3,8 @@ FROM buildpack-deps:xenial
 RUN apt-get update && apt-get install -y \
   curl \
   supervisor \
-  apt-transport-https
+  apt-transport-https \
+  libnlopt-dev
 
 # install julia
 RUN apt-get update && apt-get install -y \
