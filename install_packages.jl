@@ -1,6 +1,6 @@
 
-Pkg.init()
-Pkg.resolve()
+# Pkg.init()
+# Pkg.resolve()
 
 Pkg.add("DataFrames")
 Pkg.add("DataFramesMeta")
@@ -14,9 +14,8 @@ Pkg.add("RCall")
 Pkg.add("ArgParse")
 Pkg.add("SQLite")
 Pkg.add("ProfileView")
-Pkg.add("IJulia")
-
-Pkg.build("ZMQ")
+# Pkg.add("IJulia")
+# Pkg.build("ZMQ")
 
 if try Pkg.installed("Redis") catch nothing end == nothing
     Pkg.clone("https://github.com/merl-dev/Redis.jl")
