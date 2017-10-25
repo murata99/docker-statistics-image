@@ -27,7 +27,7 @@ RUN apt-get update && apt install -y \
 COPY . /docker-statistics-image
 
 # install julia packages
-RUN cd /docker-statistics-image && julia install_packages.jl
+RUN cd /docker-statistics-image && julia install_packages.jl && julia install_packages.jl
 
 # install R packages
 RUN cd /docker-statistics-image && Rscript install_packages.R
