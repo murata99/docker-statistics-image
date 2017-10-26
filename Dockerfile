@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
   apt-transport-https
 
 # install julia
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
   software-properties-common \
   python-software-properties \
   && add-apt-repository -y ppa:staticfloat/juliareleases \
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   libhiredis-dev
 
 # install R
-RUN apt-get update && apt install -y \
+RUN apt-get install -y \
   r-base=3.2.* \
   libcurl4-openssl-dev \
   libnlopt-dev
@@ -27,8 +27,7 @@ RUN apt-get update && apt install -y \
 COPY . /docker-statistics-image
 
 # install julia packages
-RUN cd /docker-statistics-image && julia install_packages.jl && julia install_packages.jl
+RUN cd /docker-statistics-image && julia install_packages.jl
 
 # install R packages
 RUN cd /docker-statistics-image && Rscript install_packages.R
-
