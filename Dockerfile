@@ -5,6 +5,12 @@ RUN apt-get update && apt-get install -y \
   supervisor \
   apt-transport-https
 
+# install R
+RUN apt-get install -y \
+  r-base=3.2.* \
+  libcurl4-openssl-dev \
+  libnlopt-dev
+
 # install julia
 RUN apt-get install -y \
   software-properties-common \
@@ -16,18 +22,13 @@ RUN apt-get install -y \
   libgmp3-dev \
   cmake \
   unzip \
-  libhiredis-dev
-
-# install R
-RUN apt-get install -y \
-  r-base=3.2.* \
-  libcurl4-openssl-dev \
-  libnlopt-dev
+  libhiredis-dev \
+  hdf5-tools
 
 COPY . /docker-statistics-image
 
-# install julia packages
-RUN cd /docker-statistics-image && julia install_packages.jl
-
 # install R packages
 RUN cd /docker-statistics-image && Rscript install_packages.R
+
+# install julia packages
+RUN cd /docker-statistics-image && julia install_packages.jl
